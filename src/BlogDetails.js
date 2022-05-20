@@ -4,9 +4,9 @@ import {useHistory} from 'react-router-dom'
 const BlogDetails = () => {
     const history = useHistory();
     const {id} = useParams();
-    const {data:blog, error, isPending} = useFetch('http://localhost:8000/blogs/' + id);
+    const {data:blog, error, isPending} = useFetch('https://jsonplaceholder.typicode.com/posts/' + id);
     const handleClick = () =>{
-        fetch('http://localhost:8000/blogs/' + blog.id, {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + blog.id, {
             method: 'DELETE'
         }).then(() => {
             history.push('/')
@@ -20,7 +20,7 @@ const BlogDetails = () => {
             {blog && (
                 <article>
                     <h2>{blog.title}</h2>
-                    <p>Written by {blog.author} </p>
+                    {/* <p>Written by {blog.author} </p> */}
                     <p>{blog.body}</p>
                     <button onClick={handleClick}>Delete</button>
                 </article>
